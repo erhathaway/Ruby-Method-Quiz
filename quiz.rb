@@ -12,8 +12,9 @@ end
 
 class Question
   def ask(player)
-    puts "What does Enumerable\##{self.question} do?"
-    puts
+    puts "What does\e[34m Enumerable\#\e[32m#{self.question}\e[0m do?", ""
+    #ASCII color codes:\e[34m sets the color to blue, #\e[0m returns color back to white
+
     letters = %w(A B C D)
     correct_response = ''
     @choices.shuffle.each do |choice|
