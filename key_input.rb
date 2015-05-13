@@ -1,9 +1,12 @@
-def key_input
+def key_input(*valid_responses)
 	begin
 		system("stty raw -echo")
 		input = STDIN.getc
-		ensure
+	ensure
 		system("stty -raw echo")
 	end
-	return input
+	unless valid_responses.include?(input) || valid_responses == []
+		input = key_input(*valid_responses)
+	end
+	input
 end
